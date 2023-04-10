@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SubIn.Models.Usuario>
+
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Intercambio</h2>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellidos)
+                </td>
+                <td>
+                    @using (Html.BeginForm("Index", "Intercambio", FormMethod.Get, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" value="@Html.DisplayFor(modelItem => item.id_usuario)" name="id" />
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Ver Inventario" class="btn btn-outline-dark" /> 
+                        </div>
+                    }
+                    @*@Html.ActionLink("Ver Inventario", "Index", "Intercambio", new { area = "" }, new { id = item.id_usuario })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

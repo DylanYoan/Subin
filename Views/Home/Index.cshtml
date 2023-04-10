@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@Styles.Render("~/Content/css/home")
+
+<style>
+    body {
+        overflow: hidden;
+    }
+
+   /* ul li:nth-child(1) {
+        border-bottom: 1px solid black;
+    }*/
+</style>
+
+<header class="masthead">
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+        <div class="d-flex justify-content-center">
+            <div class="text-center">
+                <h1 class="mx-auto my-0 text-uppercase">SubIn</h1>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5">
+                    ¡Beinvenido a nuestra aplicación web! Nuestra aplicación se encarga de proporcionar a los uauarios interesados en intercambiar o subastar los items que tienen en los videojuegos, espero nuestras herramientas te sean útiles ¡Suerte!
+                </h2>
+                <a class="btn btn-primary" href="@Url.Action("Register", "Account")">Get Started</a>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SubIn.Models.Subasta>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<main class="container">
+    <div class="container__title">
+        <h2>
+            Subastas
+        </h2>
+    </div>
+    
+    <div class="container__crear" style="margin-bottom: 50px;">
+        @Html.ActionLink("Crear Subasta", "Create", "Subasta", new { area = "" }, new { @class = "btn btn-primary" })
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-between">
+        @foreach (var item in Model)
+        {
+            <div class="section__card_subasta card" style="width: 18rem; margin-bottom: 20px; height: 500px;">
+
+                <img src="data:image;base64,@System.Convert.ToBase64String(item.img_subasta)" alt="Imagen subasta" class="img__subasta card-img-top">
+
+                <div class="container__body">
+                    <h3 class="title__subasta card-title">@Html.DisplayFor(modelItem => item.title)</h3>
+                    <h5 class="subtitle__subasta card-subtitle">@Html.DisplayFor(modelItem => item.fecha)</h5>
+                    <p class="descripcion__subasta card-text">
+                        @Html.DisplayFor(modelItem => item.descripcion_subasta)
+                    </p>
+
+                    @Html.ActionLink("Ver Subasta", "Index", "PagoPayPal", new { area = "" }, new { @class = "btn btn-dark" })
+                </div>
+
+            </div>
+        } 
+    </div>
+</main>
+
+
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_subasta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_item)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_subasta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_item)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@
